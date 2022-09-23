@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #daf74f4d;
+}
+
+.calc_container {
+  display: grid;
+  grid-template-columns: repeat(4, 6em);
+  grid-template-rows: minmax(7em, auto) repeat(5, 6em);
+  gap: 0.5rem;
+}
+
+.output {
+  grid-column: 1 / -1;
+  background-color: #0000004f;
+  font-size: 3rem;
+}
+
+.btn {
+  font-size: 1.2rem;
+  padding: 1rem;
+  font-weight: bold;
+}
+
+
+.spanTwo {
+  grid-column: span 2;
+}
+
