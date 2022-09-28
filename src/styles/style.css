@@ -25,11 +25,12 @@ body {
   grid-column: 1 / -1;
   background-color: #0000004f;
   font-size: 3rem;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 .btn {
   font-size: 1.2rem;
-  padding: 1rem;
   font-weight: bold;
 }
 

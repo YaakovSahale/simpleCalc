@@ -1,47 +1,53 @@
 import React from "react";
+import { useReducer } from "react";
 import { useState } from "react";
 import "./styles/style.css";
 
 const App = () => {
-  const add = (num) => {
-    x = 1;
-  };
+  const [outPutValue, setOutPutValue] = useState("");
 
-  const subtract = () => {
-    x = 1;
-  };
+  const operator = "";
+  const btnArray = [
+    "+",
+    "1",
+    "2",
+    "3",
+    "-",
+    "4",
+    "5",
+    "6",
+    "*",
+    "7",
+    "8",
+    "9",
+    "/",
+    ".",
+    "0",
+  ];
 
-  const multiply = () => {
-    x = 1;
-  };
 
-  const divide = () => {
-    x = 1;
-  };
 
-  const pressBtn = (num) => {};
+  const calcByOperator =()=>{
+    
+  }
+
+  const pressBtn = (num) => {
+    setOutPutValue((prev) => prev + num);
+  };
 
   return (
     <div className="container">
       <div className="calc_container">
-        <div className="output">536969545</div>
+        <div className="output">{outPutValue}</div>
         <button className="btn spanTwo">AC</button>
         <button className="btn">DEL</button>
-        <button className="btn">+</button>
-        <button className="btn">1</button>
-        <button className="btn">2</button>
-        <button className="btn">3</button>
-        <button className="btn">-</button>
-        <button className="btn">4</button>
-        <button className="btn">5</button>
-        <button className="btn">6</button>
-        <button className="btn">*</button>
-        <button className="btn">7</button>
-        <button className="btn">8</button>
-        <button className="btn">9</button>
-        <button className="btn">/</button>
-        <button className="btn">.</button>
-        <button className="btn">0</button>
+        {btnArray.map((num, index) => {
+          return (
+            <button key={index} className="btn" onClick={() => pressBtn(num)}>
+              {num}
+            </button>
+          );
+        })}
         <button className="btn spanTwo">=</button>
       </div>
     </div>
@@ -49,3 +55,22 @@ const App = () => {
 };
 
 export default App;
+
+{
+  /* <button className="btn">DEL</button>
+<button className="btn">+</button>
+<button className="btn">1</button>
+<button className="btn">2</button>
+<button className="btn">3</button>
+<button className="btn">-</button>
+<button className="btn">4</button>
+<button className="btn">5</button>
+<button className="btn">6</button>
+<button className="btn">*</button>
+<button className="btn">7</button>
+<button className="btn">8</button>
+<button className="btn">9</button>
+<button className="btn">/</button>
+<button className="btn">.</button>
+<button className="btn">0</button> */
+}
