@@ -4,8 +4,7 @@ import { useState } from "react";
 import "./styles/style.css";
 
 const App = () => {
-  const [outPutValue, setOutPutValue] = useState("");
-
+  const [outPutValue, setOutPutValue] = useState([]);
   const operator = "";
   const btnArray = [
     "+",
@@ -25,11 +24,26 @@ const App = () => {
     "0",
   ];
 
+  let flagValue = true
 
 
   const calcByOperator =()=>{
-    
+    let prevValue = outPutValue
   }
+
+  const allClearBtn = ()=>{
+
+  }
+
+  const deleteBtn = ()=>{
+
+  }
+
+  const equalBtn = () => {
+
+  }
+
+
 
   const pressBtn = (num) => {
     setOutPutValue((prev) => prev + num);
