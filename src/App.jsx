@@ -6,6 +6,7 @@ import "./styles/style.css";
 const App = () => {
   const [outPutValue, setOutPutValue] = useState([]);
   const operator = "";
+  
   const btnArray = [
     "+",
     "1",
