@@ -6,7 +6,7 @@ import "./styles/style.css";
 const App = () => {
   const [outPutValue, setOutPutValue] = useState([]);
   const operator = "";
-  
+  const x = 10;
   const btnArray = [
     "+",
     "1",
@@ -25,26 +25,17 @@ const App = () => {
     "0",
   ];
 
-  let flagValue = true
+  let flagValue = true;
 
+  const calcByOperator = () => {
+    let prevValue = outPutValue;
+  };
 
-  const calcByOperator =()=>{
-    let prevValue = outPutValue
-  }
+  const allClearBtn = () => {};
 
-  const allClearBtn = ()=>{
+  const deleteBtn = () => {};
 
-  }
-
-  const deleteBtn = ()=>{
-
-  }
-
-  const equalBtn = () => {
-
-  }
-
-
+  const equalBtn = () => {};
 
   const pressBtn = (num) => {
     setOutPutValue((prev) => prev + num);
