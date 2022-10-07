@@ -4,7 +4,7 @@ import { useState } from "react";
 import "./styles/style.css";
 
 const App = () => {
-  const [outPutValue, setOutPutValue] = useState([]);
+  const [outPutValue, setOutPutValue] = useReducer();
   const operator = "";
   const x = 10;
   const btnArray = [
@@ -44,7 +44,10 @@ const App = () => {
   return (
     <div className="container">
       <div className="calc_container">
-        <div className="output">{outPutValue}</div>
+        <div className="output_container">
+          <div className="prev_output">123</div>
+          <div className="current_output">456</div>
+        </div>
         <button className="btn spanTwo">AC</button>
         <button className="btn">DEL</button>
         {btnArray.map((num, index) => {
