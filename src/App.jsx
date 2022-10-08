@@ -1,12 +1,33 @@
 import React from "react";
 import { useReducer } from "react";
-import { useState } from "react";
 import "./styles/style.css";
 
+const ACTION = {
+  ADD_DIGIT: `add_digit`,
+  CHOOSE_OPERATION: `choose_operation`,
+  ALL_CLEAR: `all_clear`,
+  DELETE_DIGIT: `delete_digit`,
+  EVALUATE: `evaluate`,
+};
+
+const reducer = (state, { type, payload }) => {
+  switch (type) {
+    case ACTION.ADD_DIGIT:
+      return {
+        ...state,currentOutput: state.currentOutput+payload
+      };
+
+    default:
+      console.error;
+  }
+};
+
 const App = () => {
-  const [outPutValue, setOutPutValue] = useReducer();
-  const operator = "";
-  const x = 10;
+  const [state, dispatch] = useReducer(reducer, {
+    prevOutput: "",
+    currentOutput: "",
+  });
+
   const btnArray = [
     "+",
     "1",
@@ -45,14 +66,18 @@ const App = () => {
     <div className="container">
       <div className="calc_container">
         <div className="output_container">
-          <div className="prev_output">123</div>
-          <div className="current_output">456</div>
+          <div className="prev_output">{state.prevOutput}</div>
+          <div className="current_output">{state.currentOutput}</div>
         </div>
         <button className="btn spanTwo">AC</button>
         <button className="btn">DEL</button>
         {btnArray.map((num, index) => {
           return (
-            <button key={index} className="btn" onClick={() => pressBtn(num)}>
+            <button
+              key={index}
+              className="btn"
+              onClick={() => dispatch({ type: ACTION.ADD_DIGIT, payload: num })}
+            >
               {num}
             </button>
           );
