@@ -14,8 +14,30 @@ const reducer = (state, { type, payload }) => {
   switch (type) {
     case ACTION.ADD_DIGIT:
       return {
-        ...state,currentOutput: state.currentOutput+payload
+        ...state,
+        currentOutput: state.currentOutput + payload,
       };
+
+    case ACTION.CHOOSE_OPERATION:
+      return {
+        ...state,
+        currentOutput: state.currentOutput + payload,
+      };
+
+    case ACTION.ALL_CLEAR:
+      return state={};
+
+    case ACTION.DELETE_DIGIT:
+      return {
+        ...state,
+        currentOutput: state.currentOutput + payload,
+      };
+
+      case ACTION.EVALUATE:
+        return {
+          ...state,
+          currentOutput: state.currentOutput + payload,
+        };
 
     default:
       console.error;
@@ -24,7 +46,7 @@ const reducer = (state, { type, payload }) => {
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, {
-    prevOutput: "",
+    prevOutput: "55888",
     currentOutput: "",
   });
 
@@ -46,11 +68,7 @@ const App = () => {
     "0",
   ];
 
-  let flagValue = true;
-
-  const calcByOperator = () => {
-    let prevValue = outPutValue;
-  };
+  const calcByOperator = () => {};
 
   const allClearBtn = () => {};
 
@@ -69,7 +87,7 @@ const App = () => {
           <div className="prev_output">{state.prevOutput}</div>
           <div className="current_output">{state.currentOutput}</div>
         </div>
-        <button className="btn spanTwo">AC</button>
+        <button className="btn spanTwo" onClick={()=>dispatch({type:ACTION.ALL_CLEAR})}>AC</button>
         <button className="btn">DEL</button>
         {btnArray.map((num, index) => {
           return (

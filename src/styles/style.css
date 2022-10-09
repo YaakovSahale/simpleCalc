@@ -27,7 +27,8 @@ body {
   font-size: 3rem;
   word-wrap: break-word;
   word-break: break-all;
-  
+  display: flex;
+  flex-direction: column;
 }
 
 .prev_output{
