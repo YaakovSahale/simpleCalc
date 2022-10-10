@@ -1,11 +1,15 @@
-const DigitButton = (num, index) => {
+import React from "react";
+import ACTION from "../utils/constants";
+
+const DigitButton = ({ dispatch, digit }) => {
   return (
     <button
-      key={index}
       className="btn"
-      onClick={() => dispatch({ type: ACTION.ADD_DIGIT, payload: num })}
+      onClick={() => dispatch({ type: ACTION.ADD_DIGIT, payload: digit })}
     >
-      {num}
+      {digit}
     </button>
   );
 };
+
+export default DigitButton;

@@ -1,9 +1,9 @@
 import React from "react";
 import { useReducer } from "react";
-import ACTION from './utils/constants'
+import DigitButton from "./components/DigitButton";
+import OperatorButton from "./components/OperatorButton";
+import ACTION from "./utils/constants";
 import "./styles/style.css";
-
-
 
 const reducer = (state, { type, payload }) => {
   switch (type) {
@@ -14,6 +14,13 @@ const reducer = (state, { type, payload }) => {
       };
 
     case ACTION.CHOOSE_OPERATION:
+      // switch (payload) {
+      //   case `+`:
+          
+      //   default:
+      //     console.error
+      // }
+
       return {
         ...state,
         currentOutput: state.currentOutput + payload,
@@ -25,13 +32,13 @@ const reducer = (state, { type, payload }) => {
     case ACTION.DELETE_DIGIT:
       return {
         ...state,
-        currentOutput: state.currentOutput + payload,
+        currentOutput: state.currentOutput.slice(0,-1),
       };
 
     case ACTION.EVALUATE:
       return {
         ...state,
-        currentOutput: state.currentOutput + payload,
+        currentOutput: state.currentOutput,
       };
 
     default:
@@ -46,28 +53,30 @@ const App = () => {
     operator: "",
   });
 
-  const btnArray = [
-    "+",
-    "1",
-    "2",
-    "3",
-    "-",
-    "4",
-    "5",
-    "6",
-    "*",
-    "7",
-    "8",
-    "9",
-    "/",
-    ".",
-    "0",
-  ];
+  // const btnArray = [
+  //   "+",
+  //   "1",
+  //   "2",
+  //   "3",
+  //   "-",
+  //   "4",
+  //   "5",
+  //   "6",
+  //   "*",
+  //   "7",
+  //   "8",
+  //   "9",
+  //   "/",
+  //   ".",
+  //   "0",
+  // ];
 
   const outputElements = (
     <div className="output_container">
       <div className="prev_output">{state.prevOutput}</div>
-      <div className="current_output">{state.currentOutput} {state.operator}</div>
+      <div className="current_output">
+        {state.currentOutput} {state.operator}
+      </div>
     </div>
   );
 
@@ -83,9 +92,30 @@ const App = () => {
           AC
         </button>
 
-        <button className="btn">DEL</button>
+        <button
+          className="btn"
+          onClick={() => dispatch({ type: ACTION.DELETE_DIGIT })}
+        >
+          DEL
+        </button>
 
-        {btnArray.map((num, index) => {
+        <OperatorButton dispatch={dispatch} digit={`+`}/>
+        <DigitButton dispatch={dispatch} digit={`1`} />
+        <DigitButton dispatch={dispatch} digit={`2`} />
+        <DigitButton dispatch={dispatch} digit={`3`} />
+        <OperatorButton dispatch={dispatch} digit={`-`}/>
+        <DigitButton dispatch={dispatch} digit={`4`} />
+        <DigitButton dispatch={dispatch} digit={`5`} />
+        <DigitButton dispatch={dispatch} digit={`6`} />
+        <OperatorButton dispatch={dispatch} digit={`*`}/>
+        <DigitButton dispatch={dispatch} digit={`7`} />
+        <DigitButton dispatch={dispatch} digit={`8`} />
+        <DigitButton dispatch={dispatch} digit={`9`} />
+        <OperatorButton dispatch={dispatch} digit={`%`}/>
+        <DigitButton dispatch={dispatch} digit={`0`} />
+        <DigitButton dispatch={dispatch} digit={`.`} />
+
+        {/* {btnArray.map((num, index) => {
           return (
             <button
               key={index}
@@ -95,7 +125,7 @@ const App = () => {
               {num}
             </button>
           );
-        })}
+        })} */}
 
         <button className="btn spanTwo">=</button>
       </div>
