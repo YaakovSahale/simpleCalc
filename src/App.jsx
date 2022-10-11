@@ -6,6 +6,9 @@ import ACTION from "./utils/constants";
 import "./styles/style.css";
 
 const reducer = (state, { type, payload }) => {
+  let firstNum = null;
+  let secondNum = null;
+
   switch (type) {
     case ACTION.ADD_DIGIT:
       return {
@@ -14,9 +17,11 @@ const reducer = (state, { type, payload }) => {
       };
 
     case ACTION.CHOOSE_OPERATION:
+      firstNum = parseFloat(state.currentOutput);
+      console.log(firstNum);
       // switch (payload) {
       //   case `+`:
-          
+
       //   default:
       //     console.error
       // }
@@ -32,7 +37,7 @@ const reducer = (state, { type, payload }) => {
     case ACTION.DELETE_DIGIT:
       return {
         ...state,
-        currentOutput: state.currentOutput.slice(0,-1),
+        currentOutput: state.currentOutput.slice(0, -1),
       };
 
     case ACTION.EVALUATE:
@@ -99,19 +104,19 @@ const App = () => {
           DEL
         </button>
 
-        <OperatorButton dispatch={dispatch} digit={`+`}/>
+        <OperatorButton dispatch={dispatch} digit={`+`} />
         <DigitButton dispatch={dispatch} digit={`1`} />
         <DigitButton dispatch={dispatch} digit={`2`} />
         <DigitButton dispatch={dispatch} digit={`3`} />
-        <OperatorButton dispatch={dispatch} digit={`-`}/>
+        <OperatorButton dispatch={dispatch} digit={`-`} />
         <DigitButton dispatch={dispatch} digit={`4`} />
         <DigitButton dispatch={dispatch} digit={`5`} />
         <DigitButton dispatch={dispatch} digit={`6`} />
-        <OperatorButton dispatch={dispatch} digit={`*`}/>
+        <OperatorButton dispatch={dispatch} digit={`*`} />
         <DigitButton dispatch={dispatch} digit={`7`} />
         <DigitButton dispatch={dispatch} digit={`8`} />
         <DigitButton dispatch={dispatch} digit={`9`} />
-        <OperatorButton dispatch={dispatch} digit={`%`}/>
+        <OperatorButton dispatch={dispatch} digit={`%`} />
         <DigitButton dispatch={dispatch} digit={`0`} />
         <DigitButton dispatch={dispatch} digit={`.`} />
 
