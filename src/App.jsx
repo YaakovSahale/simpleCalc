@@ -24,6 +24,11 @@ const reducer = (state, { type, payload }) => {
 
       //   default:
       //     console.error
+      // }      // switch (payload) {
+      //   case `+`:
+
+      //   default:
+      //     console.error
       // }
 
       return {
